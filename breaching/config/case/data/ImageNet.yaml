@@ -1,0 +1,40 @@
+name: ImageNet
+modality: vision
+task: classification
+
+path: "/home/beckham/code/Stanford_HKU/fedavgmodels/Retina"
+size: 500
+classes: 2
+shape:
+  - 3
+  - 224
+  - 224
+
+# Preprocessing:
+normalize: True
+mean:
+  - 0.5
+  - 0.5
+  - 0.5
+std:
+  - 0.5
+  - 0.5
+  - 0.5
+# Data Augmentations:
+augmentations_train:
+  RandomResizedCrop: 224
+  RandomHorizontalFlip: 0.5
+augmentations_val:
+  Resize: 256
+  CenterCrop: 224
+
+# Federated Learning specifics:
+default_clients: 50
+partition: balanced # used for synthetic splits. Current options for synthetic split: balanced / unique-class
+examples_from_split: validation
+
+# Data-specific implementation constants:
+batch_size: 1
+caching: False
+defaults:
+  - db: none # Database Setup # use the cmd-line to activate the LMDB module with data.db=LMDB

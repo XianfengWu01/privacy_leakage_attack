@@ -1,0 +1,12 @@
+name: single_Retina
+
+defaults:
+  - data: Retina
+  - impl: default
+  - server: honest-but-curious
+  - user: local_updates
+  - _self_
+model: vit_retina
+
+# Server and user:
+num_queries: 1
